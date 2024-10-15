@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package adams.v1;
+
+import "proto/v1/common/utils.proto";
+
+message UploadRequest {
+  string user_id = 1;
+  string filename = 2;
+  bytes file_data = 3;
+}
+
+message UploadResponse {
+  string video_id = 1;
+  string status = 2;
+}
+
+service AdamsService {
+  rpc UploadVideo(UploadRequest) returns (UploadResponse);
+  rpc TranscodeVideo(UploadRequest) returns (UploadResponse);
+}
